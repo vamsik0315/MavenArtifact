@@ -1,20 +1,10 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+node{
+    stage('Pipeline Checkout'){
+        git credentialsId: '5353524f-b00d-46e5-8761-3079c34e7525', url: 'https://github.com/vamsik0315/MavenArtifact.git'
     }
+    stage('Mvn package'){
+    	def mvnHome = tool name: 'maven-3', type: 'maven'
+    	def mvnCMD = "${mvnHome}/bin/usr/maven"
+    	tool name: 'maven-3', type: 'maven'
+    }
+}
