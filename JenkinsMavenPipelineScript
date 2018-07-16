@@ -1,0 +1,8 @@
+node{
+  stage('SCM Checkout'){
+    git 'https://github.com/vamsik0315/MavenArtifact'
+  }
+  stage('Compile-Package')
+    sh 'mvn package'
+  
+}
